@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer to start the backup-script service every Friday at 01:00
+
+[Timer]
+OnCalendar=Fri *-*-* 01:00:00
+RandomizedDelaySec=180
+Persistent=true
+Unit=backup-script.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=use rsync to backup files/directories from current server to backup server
+
+[Service]
+Type=oneshot
+ExecStart=/opt/backup/backup-script
+
+[Install]
+WantedBy=multi-user.target
