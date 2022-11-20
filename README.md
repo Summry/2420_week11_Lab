@@ -6,8 +6,7 @@ This repo contains a script, a service file, and a timer file for each of
 
 In this README, we will be working with 1.
 
-> **Note:** The `gtwtr` files will only be located in one server.  
-> You can relatively follow along the README with setting up the `gtwtr` files.
+> **Note:** You can relatively follow along the README with setting up the `gtwtr` files.
 
 ---
 
