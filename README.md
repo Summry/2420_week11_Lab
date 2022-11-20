@@ -223,6 +223,9 @@ username@server-one:/etc/systemd/system$ sudo systemctl status backup-script.tim
 Desired output:  
 ![status timer output](images/timer_status.png)
 
+Check to see if both unit files are active, and the time when `backup-script.timer` will trigger `backup-script.service`:  
+![Next timer execution](images/list-timers.png)
+
 ---
 
 ### <ins>**6.7. Usage**</ins>  
