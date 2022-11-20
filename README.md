@@ -13,15 +13,18 @@ In this README, we will be working with 1.
   - [**1. Table of Contents**](#1-table-of-contents)
   - [**2. Set B Members**](#2-set-b-members)
   - [**3. Technologies Used**](#3-technologies-used)
-  - [**4. Assumptions**](#4-assumptions)
-  - [**5. Files**](#5-files)
-    - [**5.1. Installation**](#51-installation)
-    - [**5.2. Copy files to server-one**](#52-copy-files-to-server-one)
-    - [**5.3. Moving script**](#53-moving-script)
-    - [**5.4. Moving unit files**](#54-moving-unit-files)
-    - [**5.5. Setting up Config File**](#55-setting-up-config-file)
-    - [**5.6. Check unit files' status**](#56-check-unit-files-status)
-    - [**5.7. Usage**](#57-usage)
+  - [**4. Prerequisites and WSL Setup**](#4-prerequisites-and-wsl-setup)
+  - [**5. Servers**](#5-servers)
+    - [**5.1. Setting up server-one**](#51-setting-up-server-one)
+    - [**5.2. Setting up backup-server**](#52-setting-up-backup-server)
+  - [**6. Files**](#6-files)
+    - [**6.1. Installation**](#61-installation)
+    - [**6.2. Copy files to server-one**](#62-copy-files-to-server-one)
+    - [**6.3. Moving script**](#63-moving-script)
+    - [**6.4. Moving unit files**](#64-moving-unit-files)
+    - [**6.5. Setting up Config File**](#65-setting-up-config-file)
+    - [**6.6. Check unit files' status**](#66-check-unit-files-status)
+    - [**6.7. Usage**](#67-usage)
 - [**Go to top**](#go-to-top)
 
 ---
@@ -42,58 +45,89 @@ Nazira Fakhrurradi - A01279940
 
 ---
 
-## <ins>**4. Assumptions**</ins>
+## <ins>**4. Prerequisites and WSL Setup**</ins>
 
-> **Note:** You may need to open Windows Terminal or Powershell as Administrator.  
+Watch the following video on setting up DigitalOcean (DO) server droplets.
 
-1. You have installed **WSL Ubuntu** on your host machine and have created a regular user.  
-You can connect to **WSL** from Windows Terminal or Powershell using either:  
+[![DigitalOcean server droplet setup](images/DOsetup.png)](https://vimeo.com/758870226/f75da348fc?embedded=true&source=vimeo_logo&owner=17609105 "DO Setup")
 
-    ```
-    wsl
-    ```
+> **Note:** You will need to run Windows Terminal or Powershell as Administrator.  
 
-    or the recommended
+1. Install `WSL Ubuntu` on your host machine.  
 
-    ```
-    wsl --user <username>
-    ```
+```
+wsl --install -d Ubuntu
+```
 
-1. You have watched, reviewed, and completed the DigitalOcean (DO) setup video that will help you create and connect to a main server **server-one** and a backup server **backup-server** in DO.  
+2. Connect to the root in `WSL` and create a regular user.
+3. Exit out of the root user and reconnect to the newly-created regular user.
 
-2. You also have a regular user created within each server.
+Good job, you have successfully completed the setup for `WSL`. 
 
-If you haven't done the above yet, please [click here](https://vimeo.com/758870226/f75da348fc?embedded=true&source=vimeo_logo&owner=17609105) and follow along the video before moving onto [**Files**](#files).
-
-To verify that everything works perfectly,  
-1. from your Windows Terminal or Powershell, connect to **WSL**, then
-2. from **WSL**, ssh connect to **server-one**, then
-3. from **server-one**, ssh connect to **backup-server**.
-
-If you are able to verify the above, good job!
+> **Note:** Moving forward, we will be connecting to our own regular users throughout this README. Not to the root user.
 
 ---
 
-## <ins>**5. Files**</ins>
+## <ins>**5. Servers**</ins>
 
-### <ins>**5.1. Installation**</ins>
+### <ins>**5.1. Setting up server-one**</ins>
+
+This process is the same as what's shown in the video mentioned previously.  
+It is **HIGHLY** recommended that you complete the process below while following along with the video.
+
+1. First, connect to `WSL`. Then, generate a new SSH key of your choice using the `ssh-keygen` command.  
+This SSH key will be used to create a `server-one` droplet in DO.  
+So, go ahead and do that. If you get stuck, refer back to the video.
+2. Upon successfully creating the droplet, go ahead and connect to the root in `server-one` via SSH.
+3. Create a regular user. At this point onwards, the video will guide you through the rest of the process.
+
+If you can connect from `WSL` to the regular user you created in `server-one`, good job.
+
+> **Note:** We will only be connecting to `server-one` from `WSL`.
+
+---
+
+### <ins>**5.2. Setting up backup-server**</ins>
+
+Same process as [**Setting up server-one**](#51-setting-up-server-one).
+
+1. From `WSL`, connect to `server-one`. Then, generate a new SSH key of your choice using the `ssh-keygen` command.  
+This SSH key will be used to create a `backup-server` droplet in DO.  
+Again, follow the video.
+2. Upon successfully creating the droplet, go ahead and connect to the root in `backup-server` via SSH.
+3. Create a regular user.
+
+If you can connect from `server-one` to the regular user you created in `backup-server`, good work.
+
+To verify that everything works perfectly,  
+1. from your Windows Terminal or Powershell, connect to `WSL`, then
+2. from `WSL`, connect to `server-one`, then
+3. from `server-one`, connect to `backup-server`.
+
+If you are able to verify the above, good job! Server setup is completed.
+
+---
+
+## <ins>**6. Files**</ins>
+
+### <ins>**6.1. Installation**</ins>
 
 Clone the repo to your desired directory:  
 `git clone https://github.com/Summry/2420_week11_Lab.git`
 
 ---
 
-### <ins>**5.2. Copy files to server-one**</ins>  
+### <ins>**6.2. Copy files to server-one**</ins>  
 
 > **Note:** To make things easier for you, open a few terminals for different servers and connections.  
 
-After cloning the repo, connect to **WSL** and move to the repo directory.
+After cloning the repo, connect to `WSL` and move to the repo directory.
 
-Then connect to **server-one** using `sftp`:  
+Then connect to `server-one` using `sftp`:  
 
 ![Using sftp to connect](images/sftp_connect.png "sftp")
 
-Copy `backup-script`, `backup-script.service`, and `backup-script.timer` to `/home/username` that is in **server-one:**  
+Copy `backup-script`, `backup-script.service`, and `backup-script.timer` to `/home/username` that is in `server-one`:  
 
 ![Using sftp put](images/sftp_put.png "sftp put")
 
@@ -104,7 +138,7 @@ For more help, visit [here](https://vimeo.com/770519622/1955abff3e?embedded=true
 
 ---
 
-### <ins>**5.3. Moving script**</ins>  
+### <ins>**6.3. Moving script**</ins>  
 
 Copy `backup-script` into `/opt/backup`:  
 
@@ -117,7 +151,7 @@ Output:
 
 ---
 
-### <ins>**5.4. Moving unit files**</ins>  
+### <ins>**6.4. Moving unit files**</ins>  
 
 Copy `backup-script.service` and `backup-script.timer` into `/etc/systemd/system`:  
 
@@ -131,9 +165,9 @@ Output:
 
 ---
 
-### <ins>**5.5. Setting up Config File**</ins>
+### <ins>**6.5. Setting up Config File**</ins>
 
-In **server-one**, create a configuration file `server_one.conf` in `/etc`:  
+In `server-one`, create a configuration file `server_one.conf` in `/etc`:  
 
 ```
 username@server-one:~$ sudo vim /etc/server_one.conf
@@ -155,7 +189,7 @@ For example:
 
 --- 
 
-### <ins>**5.6. Check unit files' status**</ins>  
+### <ins>**6.6. Check unit files' status**</ins>  
 
 To confirm changes:  
 
@@ -163,7 +197,7 @@ To confirm changes:
 username@server-one:/etc/systemd/system$ sudo systemctl daemon-reload
 ```
 
-Start the service and check the status:  
+Start `backup-script.service` and check the status:  
 
 ```
 username@server-one:/etc/systemd/system$ sudo systemctl start backup-script.service
@@ -173,18 +207,25 @@ username@server-one:/etc/systemd/system$ sudo systemctl status backup-script.ser
 Desired output:  
 ![status service output](images/service_status.png)
 
-> **Warning:** If the status output displays some error, make sure your DO setup is working fine. Refer back to the videos.
-
-Enable the service and timer:  
+Enable both the service and timer:  
 
 ```
 username@server-one:/etc/systemd/system$ sudo systemctl enable --now backup-script.service
 username@server-one:/etc/systemd/system$ sudo systemctl enable --now backup-script.timer
 ```
 
+Check the status of `backup-script.timer`:  
+
+```
+username@server-one:/etc/systemd/system$ sudo systemctl status backup-script.timer
+```
+
+Desired output:  
+![status timer output](images/timer_status.png)
+
 ---
 
-### <ins>**5.7. Usage**</ins>  
+### <ins>**6.7. Usage**</ins>  
 
 > **Note:** To change to your own usernames, SSH key, and destination folder, simply edit `backup-script`.  
 > For more information about `rsync`, click this [video](https://vimeo.com/770523139/c54cf132e7?embedded=true&source=vimeo_logo&owner=17609105).
@@ -205,7 +246,7 @@ username@server-one:~$ ./script
 Example output:  
 ![Output of running the script](images/script_output.png "Output")
 
-Checking the output:  
+Checking the output in `backup-server`:  
 ![Checking the output](images/script_output_check.png "Output check")
 
 # [<ins>**Go to top**</ins>](#2420-week-11-lab)
