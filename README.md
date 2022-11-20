@@ -233,7 +233,7 @@ Check to see if both unit files are active, and the time when `backup-script.tim
 
 ### <ins>**6.7. Usage**</ins>  
 
-> **Note:** To change to your own usernames, SSH key, and destination folder, simply edit `backup-script`.  
+> **Note:** To change to your own usernames, the SSH key name, and the destination folder, simply edit `backup-script`.  
 > For more information about `rsync`, click this [video](https://vimeo.com/770523139/c54cf132e7?embedded=true&source=vimeo_logo&owner=17609105).
 
 Changing your timezone can be a pretty nice thing to do. That way the service will work with your current/local timezone instead of UTC.  
