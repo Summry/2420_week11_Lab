@@ -3,3 +3,4 @@
 . /etc/server_one.conf
 
 rsync -Pvr ${DIRECTORIES} "naziraB@${IPADDR}:/home/naziraB/backup1" -e "ssh -i /home/naziraS/.ssh/backup_server_key -o StrictHostKeyChecking=no"
+
