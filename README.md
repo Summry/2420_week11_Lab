@@ -6,6 +6,8 @@ This repo contains a script, a service file, and a timer file for each of
 
 In this README, we will be working with 1.
 
+The `.gitattributes` file configures Git to handle changing line endings.
+
 ---
 
 ## <ins>**1. Table of Contents**</ins>
