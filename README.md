@@ -6,7 +6,8 @@ This repo contains a script, a service file, and a timer file for each of
 
 In this README, we will be working with 1.
 
-The `.gitattributes` file configures Git to handle changing line endings.
+> **Note:** The `gtwtr` files will only be located in one server.  
+> You can relatively follow along the README with setting up the `gtwtr` files.
 
 ---
 
