@@ -9,3 +9,4 @@ Unit=backup-script.service
 
 [Install]
 WantedBy=timers.target
+
