@@ -19,11 +19,11 @@ In this README, we will be working with 1.
     - [**5.2. Setting up backup-server**](#52-setting-up-backup-server)
   - [**6. Files**](#6-files)
     - [**6.1. Installation**](#61-installation)
-    - [**6.2. Copy files to server-one**](#62-copy-files-to-server-one)
-    - [**6.3. Moving script**](#63-moving-script)
-    - [**6.4. Moving unit files**](#64-moving-unit-files)
+    - [**6.2. Copy Files to server-one**](#62-copy-files-to-server-one)
+    - [**6.3. Moving Script**](#63-moving-script)
+    - [**6.4. Moving Unit Files**](#64-moving-unit-files)
     - [**6.5. Setting up Config File**](#65-setting-up-config-file)
-    - [**6.6. Check unit files' status**](#66-check-unit-files-status)
+    - [**6.6. Check Unit Files' Status**](#66-check-unit-files-status)
     - [**6.7. Usage**](#67-usage)
 - [**Go to top**](#go-to-top)
 
@@ -117,7 +117,7 @@ Clone the repo to your desired directory:
 
 ---
 
-### <ins>**6.2. Copy files to server-one**</ins>  
+### <ins>**6.2. Copy Files to server-one**</ins>  
 
 > **Note:** To make things easier for you, open a few terminals for different servers and connections.  
 
@@ -138,7 +138,7 @@ For more help, visit [here](https://vimeo.com/770519622/1955abff3e?embedded=true
 
 ---
 
-### <ins>**6.3. Moving script**</ins>  
+### <ins>**6.3. Moving Script**</ins>  
 
 Copy `backup-script` into `/opt/backup`:  
 
@@ -151,7 +151,7 @@ Output:
 
 ---
 
-### <ins>**6.4. Moving unit files**</ins>  
+### <ins>**6.4. Moving Unit Files**</ins>  
 
 Copy `backup-script.service` and `backup-script.timer` into `/etc/systemd/system`:  
 
@@ -189,7 +189,7 @@ For example:
 
 --- 
 
-### <ins>**6.6. Check unit files' status**</ins>  
+### <ins>**6.6. Check Unit Files' Status**</ins>  
 
 To confirm changes:  
 

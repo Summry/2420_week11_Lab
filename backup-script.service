@@ -7,4 +7,3 @@ ExecStart=/opt/backup/backup-script
 
 [Install]
 WantedBy=multi-user.target
-
