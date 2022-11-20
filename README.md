@@ -7,7 +7,9 @@ This repo contains a script, a service file, and a timer file for each of
 ## Set B Members
 
 **Nazira Fakhrurradi** - A01279940
+
 **Yingyi (Doris) He** - A01230375
+
 **(Kooby) Hai Run Yin** - A01186094
 
 ## Technologies Used
@@ -21,6 +23,8 @@ This repo contains a script, a service file, and a timer file for each of
 ### Assumptions
 You have watched, reviewed, and completed the DigitalOcean (DO) setup video that will help you create and connect to a main server `server-one` and a backup server `backup-server` in DO.
 
+If you haven't done that, please [click here](https://vimeo.com/758870226/f75da348fc?embedded=true&source=vimeo_logo&owner=17609105) and follow along the video before moving onto the **setup**.
+
 ### Installation
 
 Clone the repo to your desired directory:
@@ -29,4 +33,3 @@ Clone the repo to your desired directory:
 ### Setup
 
 After cloning the files, copy the files to your main server `server-one`.
-
