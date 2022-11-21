@@ -4,7 +4,7 @@ This repo contains a script, a service file, and a timer file for each of
 1. **backing up directories from the current server to a backup server every Friday at 1am**
 2. **displaying weather information of a specific city everyday at 5am**
 
-In this README, we will be working with 1.
+In this README, we will mainly be working with 1.
 
 > **Note:** You can relatively follow along the README with setting up the `gtwtr` files.
 
@@ -27,6 +27,8 @@ In this README, we will be working with 1.
     - [**6.5. Setting up Config File**](#65-setting-up-config-file)
     - [**6.6. Check Unit Files' Status**](#66-check-unit-files-status)
     - [**6.7. Usage**](#67-usage)
+      - [**6.7.1. backup-script**](#671-backup-script)
+      - [**6.7.2. gtwtr**](#672-gtwtr)
 - [**Go to top**](#go-to-top)
 
 ---
@@ -136,6 +138,8 @@ Copy `backup-script`, `backup-script.service`, and `backup-script.timer` to `/ho
 Output:  
 ![sftp output](images/sftp_put_output.png "sftp put output")
 
+For `gtwtr` files, repeat the above process.
+
 For more help, visit [here](https://vimeo.com/770519622/1955abff3e?embedded=true&source=vimeo_logo&owner=17609105) to learn all that you need about `sftp`.
 
 ---
@@ -151,6 +155,9 @@ username@server-one:~$ sudo cp backup-script /opt/backup
 Output:  
 ![Copy script to /opt/backup](images/cp_script.png "Copied script")
 
+For `gtwtr` script, copy it to a different directory inside `/opt`.  
+Make sure that you edit the `ExecStart=/opt/gtwtr/gtwtr` directive in `gtwtr.service` to your new directory inside `/opt`.
+
 ---
 
 ### <ins>**6.4. Moving Unit Files**</ins>  
@@ -164,6 +171,8 @@ username@server-one:~$ sudo cp backup-script.timer /etc/systemd/system
 
 Output:  
 ![Copy unit files to /etc/systemd/system](images/cp_unit_files.png "Copied unit files")
+
+For `gtwtr` unit files, repeat the above process.
 
 ---
 
@@ -232,6 +241,8 @@ Check to see if both unit files are active, and the time when `backup-script.tim
 
 ### <ins>**6.7. Usage**</ins>  
 
+#### <ins>**6.7.1. backup-script**</ins>  
+
 > **Note:** To change to your own usernames, the SSH key name, and the destination folder, simply edit `backup-script`.  
 > For more information about `rsync`, click this [video](https://vimeo.com/770523139/c54cf132e7?embedded=true&source=vimeo_logo&owner=17609105).
 
@@ -242,10 +253,10 @@ For example:
 username@server-one:~$ sudo timedatectl set-timezone America/Toronto
 ```
 
-To test the script itself:  
+To run the script itself:  
 
 ```
-username@server-one:~$ ./script
+username@server-one:~$ ./backup-script
 ```
 
 Example output:  
@@ -253,5 +264,28 @@ Example output:
 
 Checking the output in `backup-server`:  
 ![Checking the output](images/script_output_check.png "Output check")
+
+---
+
+#### <ins>**6.7.2. gtwtr**</ins>  
+
+After making changes to the files, always run the command:  
+
+```
+username@server-one:/etc/systemd/system$ sudo systemctl daemon-reload
+```
+
+If everything was done correctly, the service will automatically run after every login to `server-one`.
+
+To run the script itself,  
+
+```
+username@server-one:~$ ./gtwtr
+```
+
+Output:  
+![gtwtr service output](images/gtwtr_output.png)
+
+> **Note:** To change the location of the weather, simply edit the `/opt/gtwtr/gtwtr` script.
 
 # [<ins>**Go to top**</ins>](#2420-week-11-lab)
