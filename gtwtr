@@ -2,3 +2,4 @@
 
 curl -s wttr.in/Vancouver -o /etc/motd
 
+cat /etc/motd
